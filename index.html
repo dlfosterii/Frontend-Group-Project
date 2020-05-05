@@ -24,7 +24,8 @@
       <!-- placeholder for navigation -->
     </div>
 
-    <div class="search-container">
+<!-- Displays to new user, else hidden and returning user displays-->
+    <div id="newUser" class="search-container">
       <div class="row">
         <div class="col min-vh-100">
           <!-- search bar content goes here -->
@@ -39,7 +40,7 @@
                 <input type="text" class="form-control rounded-xl search-box" placeholder="Enter your location to begin"
                   id="search">
                 <div class="input-group-append">
-                  <button class="btn btn-pill btn-outline-primary rounded-xl" type="button"><i
+                  <button onclick="customPage()" class="btn btn-pill btn-outline-primary rounded-xl" type="button"><i
                       class="fas fa-search"></i></button>
                 </div>
               </div>
@@ -67,6 +68,7 @@
   <!-- Temp link to js API.js file -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/scripts/API.js"></script>
+  <script src="/scripts/index.js"></script>
 </body>
 
 </html>
