@@ -2,36 +2,30 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
-    //var visited = 
-    localStorage.setItem('user', "city: 'atlanta', zip: '30043'");    //localStorage.getItem('user');
+    // Get user's visit status from local storage
     let visited = localStorage.getItem('user');
-    var returnDiv = document.getElementById('returningUser');
-    cons
+    console.log(visited);
+    let visitedJSON = JSON.parse(visited);
+    console.log(visitedJSON);
 
-    // get users info from local storage
 
-    //const userLocation = localStorage.setItem('user', {city: 'atlanta', zip: '30043'});    //localStorage.getItem('user');//JSON.parse(visited);
-    pageInit(visited);
+    // Assign contants to returningUser and newUser <div> elements in index.html
+    const returnDiv = document.getElementById('returningUser');
+    const newDiv = document.getElementById('newUser');
 
-    function pageInit(visitStatus) {
-        var x = document.getElementById('newUser');
-    
-        // NEED TO PUT OTHER NOT-TRUE CONDITIONS BELOW
-        if (visitStatus != null) {
-            x.style.display = 'none';
-            console.log(visitStatus.user.city);
-           // console.log(returnDiv.textContent += `${visitStatus.city}`);
-    
-        } else {
-            x.style.display = 'flex';
-            x.innerHTML += '<h1>NEW USER</h1>';
-        }
+    if (visitedJSON === null) {
+        console.log('null');
+    } else {
+        $('.search-container').hide();
     }
 });
 
+console.log('test');
+// Create global variable for location data
 var placesService;
 
 // Set Global Variables
+//const newDiv = document.getElementById('newUser');
 const user = {
     zip: '',
     state: '',
@@ -49,6 +43,7 @@ $('#search-button').on('click', function () {
             'formatted_address',
         ],
     };
+    console.log(searchValue);
     placesService.findPlaceFromQuery(request, function (results, status) {
         // If else checks user input, can be updated for better error handling
         if (results == null || results == 'ZERO_RESULTS') {
@@ -79,23 +74,18 @@ $('#search-button').on('click', function () {
             console.log(userInfoToParse);
             localStorage.setItem('user', userInfoToParse);
         }
-
-
-    }
-    );
-
-
-
+    });
+    newUserDiv();
 });
 
+// Callback function to display returning user's div
+function newUserDiv() {
+    newDiv.style.display = 'block';
+    newDiv.innerHTML += '<h1>NEW USER</h1>';
+};
 
 // Callback function to generate map used in the URL for the API in index.html
 function initMap() {
     console.log('init map');
     placesService = new google.maps.places.PlacesService(document.createElement('div'));
 };
-
-
-
-
-
