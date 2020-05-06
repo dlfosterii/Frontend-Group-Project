@@ -24,7 +24,7 @@
       <!-- placeholder for navigation -->
     </div>
 
-<!-- Displays to new user, else hidden and returning user displays-->
+<!-- Displays to new user, else hidden and shows returning user display-->
     <div id="newUser" class="search-container">
       <div class="row">
         <div class="col min-vh-100">
@@ -40,7 +40,7 @@
                 <input type="text" class="form-control rounded-xl search-box" placeholder="Enter your location to begin"
                   id="search">
                 <div class="input-group-append">
-                  <button onclick="customPage()" class="btn btn-pill btn-outline-primary rounded-xl" type="button"><i
+                  <button onclick="pageInit()" class="btn btn-pill btn-outline-primary rounded-xl" type="button"><i
                       class="fas fa-search"></i></button>
                 </div>
               </div>
@@ -50,7 +50,10 @@
       </div>
     </div>
   </div>
-
+<!-- Displays to returning user, else hidden and shows new user display-->
+    <div id="returningUser" class="news-container">
+      <!-- News content goes here -->
+    </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
