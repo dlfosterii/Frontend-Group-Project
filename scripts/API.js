@@ -4,41 +4,35 @@ let newsSearch = [];
 
 // loadArticles
 
-axios.get('https://gnews.io/api/v3/search?q=georgia&token=a5ad6e266f09e9d9a306372a761e63bd')
-.then(function renderArticles (response){
-    $newsSearch = response.data;
-    console.log(newsSearch);
-    console.log(response.data);
-    console.log(response.data.articles);
-    console.log(response.data.articles.title);
 
-})
-    // newsSearch.articles.map(function (article) {
-// document.addEventListener(‘DOMContentLoaded’, function () {
-    
 
-//             new
-            
-//         });
-//     })
+document.addEventListener('DOMContentLoaded', function () {
+    axios.get('https://gnews.io/api/v3/search?q=georgia&token=a5ad6e266f09e9d9a306372a761e63bd')
+    .then(function (response){
+        newsSearch = response.data.articles;
+        // console.log(newsSearch);
+        let newsBlock = newsSearch.map(function (article) {
+        console.log(article.title);
+        console.log(article.url);
+        return `
+    <a href="${article.url}">${article.title}</a><br>`
+    })
+    $newsContainer.html(newsBlock)
+        });
+    })
 
-//         return `
-//     <a href="${article.url}">${article.title}</a>`
 
 // }
 
 
-// function displayStories (array) {
 
 // }
 
 // USE CODE BELOW TO DESIGN ABOVE
 
-
-
 // const movieContainer = document.getElementById('movies-container')
 // const myForm = document.getElementById('search-form');
-// document.addEventListener(‘DOMContentLoaded’, function() {
+// document.addEventListener('DOMContentLoaded', function() {
 //     function renderMovies(movieArray) {
 //         let movieHtmlArray = movieArray.map(function (currentMovie) {
 //             return `
