@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var returnDiv = document.getElementById('returningUser');
     cons
 
+    var placesService;
+
+    // Set Global Variables
+    const user = {
+        zip: '',
+        state: '',
+        city: '',
+        country: '',
+    };
     // get users info from local storage
 
     //const userLocation = localStorage.setItem('user', {city: 'atlanta', zip: '30043'});    //localStorage.getItem('user');//JSON.parse(visited);
@@ -29,15 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-var placesService;
 
-// Set Global Variables
-const user = {
-    zip: '',
-    state: '',
-    city: '',
-    country: '',
-};
 
 // Event handler that saves user's location input
 $('#search-button').on('click', function () {
