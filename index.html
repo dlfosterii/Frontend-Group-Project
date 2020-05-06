@@ -40,7 +40,7 @@
                 <input type="text" class="form-control rounded-xl search-box" placeholder="Enter your location to begin"
                   id="search">
                 <div class="input-group-append">
-                  <button class="btn btn-pill btn-outline-primary rounded-xl" type="button"><i
+                  <button id="search-button" class="btn btn-pill btn-outline-primary rounded-xl" type="button"><i
                       class="fas fa-search"></i></button>
                 </div>
               </div>
@@ -55,11 +55,10 @@
       <!-- News content goes here -->
     </div>
 
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
     crossorigin="anonymous"></script>
@@ -68,10 +67,17 @@
     crossorigin="anonymous"></script>
   <!-- font awesome script for icons and buttons -->
   <script src="https://kit.fontawesome.com/771e6a2d5d.js" crossorigin="anonymous"></script>
+
   <!-- Temp link to js API.js file -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/scripts/API.js"></script>
-  <script src="/scripts/index.js"></script>
+
+
+  <script src="./scripts/index.js"></script>
+  <!-- link to Google Maps API -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAj1tmunWKZHeWKfqhNb1DOVOBSKG-rGnA&libraries=places&callback=initMap"></script>
+
+
 </body>
 
 </html>
