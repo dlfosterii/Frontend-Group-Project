@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 
     // Get user's visit status from local storage
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('null');
     } else {
         $('.search-container').hide();
+        getNews();
     }
 });
 
