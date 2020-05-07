@@ -1,4 +1,14 @@
+// Create global variable for location data
+var placesService;
 
+// Set Global Variables
+//const newDiv = document.getElementById('newUser');
+const user = {
+    zip: '',
+    state: '',
+    city: '',
+    country: '',
+};
 document.addEventListener('DOMContentLoaded', function () {
     // Get user's visit status from local storage
     let visited = localStorage.getItem('user');
@@ -18,73 +28,58 @@ document.addEventListener('DOMContentLoaded', function () {
         getNews();
     }
 
-    // Event listeners for main search bar button
-    $('#search-button').on('click', function () {
-        const searchValue = $('#search');
-        setLocation(searchValue);
-    });
-    // Event listener for top nav bar button
-    $('#button-nav').on('click', function () {
-        const navValue = $('#search-nav');
-        setLocation(navValue);
-    });
-
-    // Main function to set users Location
-    function setLocation(inputValue) {
-        const searchValue = inputValue.val();
-        const request = {
-            query: searchValue,
-            fields: [
-                'name',
-                'formatted_address',
-            ],
-        };
-        placesService.findPlaceFromQuery(request, function (results, status) {
-            // If else checks user input, can be updated for better error handling
-            if (results == null || results == 'ZERO_RESULTS') {
-                console.log('error with user input');
-            } else {
-                // Formats the response from google API
-                let formattedString = results[0].formatted_address;
-                let locationArray = formattedString.split(', ');
-                let userStateZip = (locationArray[locationArray.length - 2]);
-                let stateZip = userStateZip.split(' ');
-                // Sets the values of the user object 
-                user.state = stateZip[0];
-                user.zip = stateZip[1];
-                user.country = (locationArray[locationArray.length - 1]);
-                user.city = (locationArray[locationArray.length - 3])
-            }
-
-            // Push user {} to localStorage
-            let userInfo = localStorage.getItem('user');
-            let userInfoParsed = JSON.parse(userInfo);
-            // If user doesn't exist in localStorage create empty array
-            if (userInfoParsed === null) {
-                userInfoParsed = [];
-            }
-            // Stringify user then save it to localStorage
-            userInfoToParse = JSON.stringify(user);
-            localStorage.setItem('user', userInfoToParse);
-
-            // Assign users location to the placeholder of Navbar Input
-            $('#search-nav').attr()
-        });
-    }
-
 });
 
-// Create global variable for location data
-var placesService;
+// Event listeners for main search bar button
+$('#search-button').on('click', function () {
+    const searchValue = $('#search');
+    setLocation(searchValue);
+});
+// Event listener for top nav bar button
+$('#button-nav').on('click', function () {
+    const navValue = $('#search-nav');
+    setLocation(navValue);
+});
 
-// Set Global Variables
-//const newDiv = document.getElementById('newUser');
-const user = {
-    zip: '',
-    state: '',
-    city: '',
-    country: '',
-};
+// Main function to set users Location
+function setLocation(inputValue) {
+    const searchValue = inputValue.val();
+    const request = {
+        query: searchValue,
+        fields: [
+            'name',
+            'formatted_address',
+        ],
+    };
+    placesService.findPlaceFromQuery(request, function (results, status) {
+        // If else checks user input, can be updated for better error handling
+        if (results == null || results == 'ZERO_RESULTS') {
+            console.log('error with user input');
+        } else {
+            // Formats the response from google API
+            let formattedString = results[0].formatted_address;
+            let locationArray = formattedString.split(', ');
+            let userStateZip = (locationArray[locationArray.length - 2]);
+            let stateZip = userStateZip.split(' ');
+            // Sets the values of the user object 
+            user.state = stateZip[0];
+            user.zip = stateZip[1];
+            user.country = (locationArray[locationArray.length - 1]);
+            user.city = (locationArray[locationArray.length - 3])
+        }
+
+        // Push user {} to localStorage
+        let userInfo = localStorage.getItem('user');
+        let userInfoParsed = JSON.parse(userInfo);
+        // If user doesn't exist in localStorage create empty array
+        if (userInfoParsed === null) {
+            userInfoParsed = [];
+        }
+        // Stringify user then save it to localStorage
+        userInfoToParse = JSON.stringify(user);
+        localStorage.setItem('user', userInfoToParse);
+    });
+}
 
 // Callback function to display returning user's div
 function newUserDiv() {
