@@ -51,6 +51,18 @@ $('#button-nav').on('click', function () {
     setLocation(navValue);
 });
 
+
+
+
+
+$('.theme-item').on('click', function () {
+    document.getElementById('theme').setAttribute('href', 'styles/' + this.dataset.theme + '.css');
+});
+
+
+
+
+
 // Main function to set users Location
 function setLocation(inputValue) {
     const searchValue = inputValue.val();

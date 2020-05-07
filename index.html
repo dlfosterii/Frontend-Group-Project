@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- local style sheet -->
-  <link rel="stylesheet" href="styles/style.css">
+  <link id="theme" rel="stylesheet" href="styles/style.css">
 
   <title>Local Dashboard</title>
 </head>
@@ -39,9 +39,7 @@
             <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="button-nav">Submit</button>
           </form>
         </div>
-
       </nav>
-
     </div>
   </div>
 
@@ -73,6 +71,26 @@
                       onclick=><i class="fas fa-search"></i></button>
                   </div>
                 </div>
+
+
+
+
+
+
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown"
+                      data-toggle="dropdown">Change Theme</button>
+                    
+                    <div class="dropdown-menu">
+                      <button id="default" class="theme-item dropdown-item" data-theme="style">Default</button>
+                      <button id="earthtone" class="theme-item dropdown-item" data-theme="earthTone">Earth Tone</button>
+                    </div>
+                  </div>
+
+
+
+
+
 
               </div>
             </div>
