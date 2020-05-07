@@ -2,11 +2,6 @@
 let $newsContainer = $('#news');
 let newsSearch = [];
 
-
-
-
-
-
 function getNews(city, state) {
   // Get user's visit status from local storage
   // let user1 = localStorage.getItem('user');
@@ -19,8 +14,9 @@ function getNews(city, state) {
   // let searchState = user1JSON.state;
   // console.log(searchState);
 
-  axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=134a593a2e5be5221726bf39ef418260`)
+  axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=975a5f376a3a857c1cc3d8751561869f`)
     .then(function (response) {
+      // add error handling if news doesnt show
       newsSearch = response.data.articles;
       console.log(newsSearch);
       let newsBlock = newsSearch.map(function (article) {
@@ -30,7 +26,7 @@ function getNews(city, state) {
         //Set card into the news container on main page
         return `
         
-<div class="row row-cols-1">
+<div class="row row-cols-1 w-lg-50 w-sm-100">
                 <div class="col mb-4">
                   <div class="card">
                     <img src="${article.image}" class="card-img-top" alt="">
