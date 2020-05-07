@@ -18,33 +18,39 @@
 <body>
 
   <!-- main container -->
-  <div class="container">
+  <div class="container mt-5">
 
     <!-- placeholder for navigation -->
     <div id="navigation">
-      <nav class="navbar navbar-expand-md navbar-light bg-light" id="#navbarShow">
+      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" id="#navbarShow">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-block d-md-none"><a href="#news">News</a></div>
+          <div class="d-block d-md-none"><a href="#weatherWidget">Weather</a></div>
+          <div class="d-block d-md-none"><a href="#calendarWidget">Calendar</a></div>
+
           <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="enter location" aria-label="Search"
+            <input class="form-control mr-sm-2" type="search" placeholder="change location" aria-label="Search"
               id="search-nav">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="button-nav">Change
-              Location</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="button-nav">Submit</button>
           </form>
         </div>
+
       </nav>
+
     </div>
   </div>
 
+
+
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 d-flex bg-light justify-content-center">
-      <div id="news">
-        <h1>Today's latest news</h1>
+    <div class="col-md-6 bg-light order-sm-1">
+      <h2 class="p-3">Local News</h2>
+      <div id="news" class="col-md-12 col-sm-12 justify-content-around overflow-auto" style="height: 100vh">
         <!-- news goes here, hopefully -->
       </div>
       <!-- Displays to new user, else hidden and shows returning user display-->
@@ -74,8 +80,12 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3"></div>
-  </div>
+    <div class="col-md-6 order-sm-2">
+      <div id="weatherWidget"></div>
+      <div id="calendarWidget">
+        <div class="googleCalendar my-auto"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Optional JavaScript -->
@@ -94,12 +104,20 @@
   <script src="./scripts/index.js"></script>
   <!-- Temp link to js API.js file -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/scripts/API.js"></script>
+  <!-- <script src="/scripts/API.js"></script> -->
 
 
   <!-- link to Google Maps API -->
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj1tmunWKZHeWKfqhNb1DOVOBSKG-rGnA&libraries=places&callback=initMap"></script>
+
+  <!-- weather widget jS -->
+  <script type="text/javascript" src="https://widgets-viewer.climacell.co/v1/sdk.js"></script>
+
+
+  <!-- clock widget -->
+  <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+
 
 </body>
 
