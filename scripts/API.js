@@ -7,19 +7,19 @@ let newsSearch = [];
 
 
 
-function getNews() {
+function getNews(city, state) {
   // Get user's visit status from local storage
-  let user1 = localStorage.getItem('user');
-  console.log(user);
-  let user1JSON = JSON.parse(user1);
-  console.log(user1JSON);
+  // let user1 = localStorage.getItem('user');
+  // console.log(user);
+  // let user1JSON = JSON.parse(user1);
+  // console.log(user1JSON);
 
 
-  let searchCity = user1JSON.city;
-  let searchState = user1JSON.state;
-  console.log(searchState);
+  // let searchCity = user1JSON.city;
+  // let searchState = user1JSON.state;
+  // console.log(searchState);
 
-  axios.get(`https://gnews.io/api/v3/search?q=${searchCity}%20${searchState}&token=134a593a2e5be5221726bf39ef418260`)
+  axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=134a593a2e5be5221726bf39ef418260`)
     .then(function (response) {
       newsSearch = response.data.articles;
       console.log(newsSearch);

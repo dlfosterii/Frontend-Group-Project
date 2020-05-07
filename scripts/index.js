@@ -78,6 +78,13 @@ function setLocation(inputValue) {
         // Stringify user then save it to localStorage
         userInfoToParse = JSON.stringify(user);
         localStorage.setItem('user', userInfoToParse);
+
+        console.log(user.city)
+        getNews(user.city, user.state);
+        location.reload();
+        return false;
+
+
     });
 }
 
