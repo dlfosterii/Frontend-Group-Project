@@ -1,0 +1,83 @@
+/* Imports default 'styles.css' values */
+@import url("style.css"); 
+
+/* Assigns names to color codes */
+:root {
+    --c1: #ff0000;
+    --c2: #00ff00;
+    --c3: #0000ff;
+    --c4: #eeff00;
+    --c5: #ff00ea;
+}
+
+/* Changes background color */ 
+body {
+  background-color: var(--c1);
+}
+body:hover {
+  background-color: var(--c5);
+}
+
+div {
+  background-color: var(--c2);
+}
+div:hover {
+  background-color: var(--c3);
+}
+
+h2 {
+  background-color: var(--c2);
+  color: var(--c5);
+}
+h2:hover {
+  background-color: var(--c1);
+  color: var(--c2);
+}
+
+h2 {
+  background-color: var(--c3);
+  color: var(--c4);
+}
+h2:hover {
+  background-color: var(--c5);
+  color: var(--c1);
+}
+
+h3 {
+  background-color: var(--c4)
+}
+h3:hover {
+  background-color: var(--c2)
+}
+
+h4 {
+  background-color: var(--c5)
+}
+h4:hover {
+  background-color: var(--c4)
+}
+
+p {
+  background-color: var(--c2)
+}
+p:hover {
+  background-color: var(--c1)
+}
+
+#color1 {background-color: var(--c1); border-style: solid;}
+#color2 {background-color: var(--c2); border-style: solid;}
+#color3 {background-color: var(--c3); border-style: solid;}
+#color4 {background-color: var(--c4); border-style: solid;}
+#color5 {background-color: var(--c5); border-style: solid;}
+
+.area {
+  text-align: center;
+  font-size: 6.5em;
+  color: #fff;
+  letter-spacing: -7px;
+  font-weight: 700;
+  text-transform: uppercase;
+  animation: blur .75s ease-out infinite;
+  text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
+}
+

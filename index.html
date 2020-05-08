@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- local style sheet -->
-  <link rel="stylesheet" href="styles/style.css">
+  <link id="theme" rel="stylesheet" href="styles/style.css">
 
   <title>Local Dashboard</title>
 </head>
@@ -51,11 +51,10 @@
             <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="button-nav">Change Location</button>
           </form>
         </div>
-
       </nav>
-
     </div>
   </div>
+
 
   <!-- Displays to new user, else hidden and shows returning user display-->
   <div id="newUser" class="search-container">
@@ -73,6 +72,7 @@
                   information</div>
               </div>
               <div class="d-flex justify-content-center">
+
                 <!-- search form -->
                 <!-- <div class="row d-flex justify-content-center align-items-middle border border-danger" id="
                   searchBoxContainer" style="max-width: 100%"> -->
@@ -84,6 +84,33 @@
                       onclick=><i class="fas fa-search"></i></button>
                   </div>
                 </div>
+
+
+                <!-- Dropdown button with menu for changing theme -->
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="themeDropdown"
+                    data-toggle="dropdown">Change Theme</button>
+                  <div class="dropdown-menu">
+                    <button id="style" class="theme-item dropdown-item" data-theme="style">Default</button>
+                    <button id="earthtone" class="theme-item dropdown-item" data-theme="earthtone">Earth Tone</button>
+                    <button id="squirtle" class="theme-item dropdown-item" data-theme="squirtle">Squirtle</button>
+                    <button id="teaparty" class="theme-item dropdown-item" data-theme="teaparty">Tea Party</button>
+                    <div class="dropdown-divider"></div>
+                    <button id="crayon" class="theme-item dropdown-item" data-theme="crayon">:CrAyOn:</button>
+                    <button id="partymode" class="theme-item dropdown-item" data-theme="partymode">P.A.R.T.Y</button>
+                  </div>
+                </div>
+
+                <!-- Color Sampler -->
+                <div>
+                  <div id="color1"><a>COLOR 1</a></div>
+                  <div id="color2"><a>COLOR 2</a></div>
+                  <div id="color3"><a>COLOR 3</a></div>
+                  <div id="color4"><a>COLOR 4</a></div>
+                  <div id="color5"><a>COLOR 5</a></div>
+                </div>
+
+
               </div>
             </div>
           </div>

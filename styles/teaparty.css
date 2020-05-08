@@ -1,0 +1,22 @@
+/* Imports default 'styles.css' values */
+@import url("style.css"); 
+
+/* Assigns names to color codes */
+:root {
+    --c1: #ffb8d1;
+    --c2: #e4b4c2;
+    --c3: #e7cee3;
+    --c4: #e0e1e9;
+    --c5: #ddfdfe;
+}
+
+/* Changes background color */ 
+body {
+    background-color: var(--c1);
+  }
+
+#color1 {background-color: var(--c1); border-style: solid;}
+#color2 {background-color: var(--c2); border-style: solid;}
+#color3 {background-color: var(--c3); border-style: solid;}
+#color4 {background-color: var(--c4); border-style: solid;}
+#color5 {background-color: var(--c5); border-style: solid;}
