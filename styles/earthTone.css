@@ -10,13 +10,31 @@
     --c5: #847577;
 }
 
-/* Background */ 
+/* Changes background color */ 
 body {
-    background-color: var(--c1);
-  }
+  background-color: var(--c1);
+}
 
-#color1 {background-color: var(--c1); border-style: solid;}
-#color2 {background-color: var(--c2); border-style: solid;}
-#color3 {background-color: var(--c3); border-style: solid;}
-#color4 {background-color: var(--c4); border-style: solid;}
-#color5 {background-color: var(--c5); border-style: solid;}
+.card {
+background-color: var(--c3);
+}
+
+#navbarShow {
+background-color: var(--c5);
+}
+
+h2 {
+color: var(--c5);
+}
+
+a {
+color: var(--c2);
+}
+
+a:hover {
+color: var(--c5);
+}
+
+p {
+color: var(--c5);
+}
