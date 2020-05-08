@@ -142,7 +142,10 @@ function initMap() {
 // get weather info and create widget 
 function getWeather(obj) {
 
-    const { city, lng, lat } = obj;
+    let { city, lng, lat } = obj;
+    if (city === undefined) {
+        city = ' ';
+    }
     // push in users lat and lng to the weather widget
     $('#weatherWidget').append(`<div class="climacell-widget" data-apikey="Ejzw0cBfFqLJY7Cs3pX4ByvMz2Kb3l3y"
     data-type="nowcast" data-location-name="${city}" data-location-lon="${lng}" data-location-lat="${lat}"
@@ -162,7 +165,7 @@ let newsSearch = [];
 
 function getNews(city, state) {
 
-    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=73557eb7c3e88ea1c45a32d017c8746e`)
+    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=622dbe54e556e8e03aea093209ed0389`)
         .then(function (response) {
             // add error handling if news doesnt show
             newsSearch = response.data.articles;
@@ -172,7 +175,7 @@ function getNews(city, state) {
                 return `
                 <div class="row row-cols-1 w-lg-50 w-sm-100">
                 <div class="col mb-4">
-                  <div class="card shadow">
+                  <div class="card shadow rounded-sm">
                     <img src="${article.image}" class="card-img-top" alt="">
                     <div class="card-body">
                     <h5 class="card-title"><a href="${article.url}">${article.title}<a/></h5>

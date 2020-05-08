@@ -31,3 +31,19 @@
     width: 100%;
     height: 100%;
 }
+
+a {
+    color: rgb(84, 84, 84);
+}
+
+a:hover {
+    text-decoration: none;
+    color: green;
+}
+
+@media only screen and (max-width: 600px) {
+    #searchBoxContainer {
+        max-width: 100%;
+        align-items: center;
+    }
+}
