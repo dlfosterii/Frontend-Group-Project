@@ -3,14 +3,14 @@
 
 /* Assigns names to color codes */
 :root {
-    --c1: #fbfbf2;
-    --c2: #e5e6e4;
-    --c3: #cfd2cd;
-    --c4: #a6a2a2;
-    --c5: #847577;
+    --c1: #000505;
+    --c2: #3b3355;
+    --c3: #5d5d81;
+    --c4: #bfcde0;
+    --c5: #fefcfd;
 }
 
-/* Background */ 
+/* Changes background color */ 
 body {
     background-color: var(--c1);
   }

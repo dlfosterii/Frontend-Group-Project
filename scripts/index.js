@@ -12,8 +12,6 @@ const user = {
     lng: '',
 };
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
     // Get user's visit status from local storage
     let visited = localStorage.getItem('user');
@@ -51,17 +49,16 @@ $('#button-nav').on('click', function () {
     setLocation(navValue);
 });
 
-
-
-
-
+// Event listener for changing theme and saving to local storage
 $('.theme-item').on('click', function () {
-    document.getElementById('theme').setAttribute('href', 'styles/' + this.dataset.theme + '.css');
+    const themeName = this.dataset.theme;
+    document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
+    if (themeName !== 'partymode') {
+        localStorage.setItem('theme', themeName);
+    } else {
+        localStorage.setItem('theme', 'style');
+    }
 });
-
-
-
-
 
 // Main function to set users Location
 function setLocation(inputValue) {
