@@ -63,16 +63,18 @@ $('.theme-item').on('click', function () {
     // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
     // Ensure only non-experimental themes are saved to local storage
-    if (themeName !== 'partymode' || themeName !== 'crayon') {
-        localStorage.setItem('theme', themeName);
-    } else {
-        localStorage.setItem('theme', 'style');
-    }
+    // if (themeName !== 'partymode' || themeName !== 'crayon') {
+    //     localStorage.setItem('theme', themeName);
+    // } else {
+    //     localStorage.setItem('theme', 'style');
+    // }
 });
 
 // Main function to set users Location
 function setLocation(inputValue) {
+    console.log(inputValue);
     const searchValue = inputValue.val();
+    console.log(searchValue);
     const request = {
         query: searchValue,
         fields: [
@@ -85,7 +87,9 @@ function setLocation(inputValue) {
         // If else checks user input, can be updated for better error handling
         if (results == null || results == 'ZERO_RESULTS') {
             console.log('error with user input');
+            console.log(status);
         } else {
+            console.log(status);
             user.lat = results[0].geometry.location.lat();
             user.lng = results[0].geometry.location.lng();
             // Formats the response from google API
