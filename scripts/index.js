@@ -24,17 +24,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const newDiv = document.getElementById('newUser');
     if (visitedJSON == null) {
         console.log('localStorage = null');
-        $('#news').hide();
+        $('#news').toggle();
+        $('#newsContainer').toggle();
+        $('#widgets').toggle();
         $('.search-container').show();
-        $('#navigation').css('display', 'none')
+        $('#navigation').toggle();
 
     } else {
-        $('.search-container').css('display', 'none');
+        $('.search-container').toggle();
         console.log('adding weather');
         getWeather(visitedJSON);
         getCalendar();
         console.log(visitedJSON);
         getNews(visitedJSON.city, visitedJSON.state);
+        if (visitedJSON.city === undefined) {
+            $("#search-nav").attr("placeholder", `${visitedJSON.state}`)
+        } else {
+            $("#search-nav").attr("placeholder", `${visitedJSON.city}, ${visitedJSON.state}`)
+        }
     }
     var offset = new Date().getTimezoneOffset();
     console.log(offset);
@@ -92,13 +99,13 @@ function setLocation(inputValue) {
         userInfoToParse = JSON.stringify(user);
         localStorage.setItem('user', userInfoToParse);
 
+        $("#search-nav").attr("placeholder", `${user.city}, ${user.state}`)
         console.log(user.city)
         getNews(user.city, user.state);
         getWeather(user);
         getCalendar();
         location.reload();
         return false;
-
     });
 }
 
@@ -108,18 +115,34 @@ function newUserDiv() {
     newDiv.innerHTML += '<h1>NEW USER</h1>';
 };
 
+var map;
 // Callback function to generate map used in the URL for the API in index.html
 function initMap() {
     console.log('init map');
     placesService = new google.maps.places.PlacesService(document.createElement('div'));
+
+    let userInfo = localStorage.getItem('user');
+    let userInfoParsed = JSON.parse(userInfo);
+    let userQuard = { lat: userInfoParsed.lat, lng: userInfoParsed.lng };
+
+    // builds the map
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: userQuard,
+        zoom: 13
+    });
+    // adds the users location as a marker on the map
+    // var marker = new google.maps.Marker({ position: userQuard, map: map });
+
+    // adds traffic overlay
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+
 };
 
 // get weather info and create widget 
 function getWeather(obj) {
 
     const { city, lng, lat } = obj;
-
-    console.log(city);
     // push in users lat and lng to the weather widget
     $('#weatherWidget').append(`<div class="climacell-widget" data-apikey="Ejzw0cBfFqLJY7Cs3pX4ByvMz2Kb3l3y"
     data-type="nowcast" data-location-name="${city}" data-location-lon="${lng}" data-location-lat="${lat}"
@@ -139,20 +162,17 @@ let newsSearch = [];
 
 function getNews(city, state) {
 
-    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=975a5f376a3a857c1cc3d8751561869f`)
+    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=73557eb7c3e88ea1c45a32d017c8746e`)
         .then(function (response) {
             // add error handling if news doesnt show
             newsSearch = response.data.articles;
-            console.log(newsSearch);
             let newsBlock = newsSearch.map(function (article) {
-                console.log(article.title);
-                console.log(article.url);
 
                 //Set card into the news container on main page
                 return `
-<div class="row row-cols-1 w-lg-50 w-sm-100">
+                <div class="row row-cols-1 w-lg-50 w-sm-100">
                 <div class="col mb-4">
-                  <div class="card">
+                  <div class="card shadow">
                     <img src="${article.image}" class="card-img-top" alt="">
                     <div class="card-body">
                     <h5 class="card-title"><a href="${article.url}">${article.title}<a/></h5>
@@ -162,6 +182,6 @@ function getNews(city, state) {
                   </div>
         `
             })
-            $newsContainer.html(newsBlock);
+            $newsContainer.append(newsBlock);
         });
 }

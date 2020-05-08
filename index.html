@@ -22,8 +22,10 @@
 
     <!-- placeholder for navigation -->
     <div id="navigation">
-      <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" id="#navbarShow">
-        <a class="navbar-brand" href="#">Navbar</a>
+      <nav class="navbar navbar-expand-md navbar-light fixed-top shadow-sm" id="#navbarShow"
+        style="background-color: lightgray;">
+        <img src="resources/images/LID_Logos_Dark_Logo.svg" height="50px">
+        <a class="navbar-brand" href="#"><em>Your Key To Local Information</em></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,11 +34,12 @@
           <div class="d-block d-md-none"><a href="#news">News</a></div>
           <div class="d-block d-md-none"><a href="#weatherWidget">Weather</a></div>
           <div class="d-block d-md-none"><a href="#calendarWidget">Calendar</a></div>
+          <div class="d-block d-md-none"><a href="#mapWidget">Traffic</a></div>
 
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="change location" aria-label="Search"
               id="search-nav">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="button-nav">Submit</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" id="button-nav">Change Location</button>
           </form>
         </div>
 
@@ -45,45 +48,51 @@
     </div>
   </div>
 
-
-
-  <div class="row">
-    <div class="col-md-6 bg-light order-sm-1">
-      <h2 class="p-3">Local News</h2>
-      <div id="news" class="col-md-12 col-sm-12 justify-content-around overflow-auto" style="height: 100vh">
-        <!-- news goes here, hopefully -->
-      </div>
-      <!-- Displays to new user, else hidden and shows returning user display-->
-      <div id="newUser" class="search-container">
-        <div class="row">
-          <div class="col min-vh-100">
-            <!-- search bar content goes here -->
-            <div class="container d-flex h-100 w-100 justify-content-center text-center">
-              <div class="my-auto">
-                <div class="row d-block">
-                  <small>everything you need in one place</small>
-                  <h1 class='display-5'>Your Local Dashboard</h1>
-                </div>
-                <!-- search form -->
-                <div class="input-group d-flex p-1 mt-3 search-bar">
-                  <input type="text" class="form-control rounded-xl search-box"
-                    placeholder="Enter your location to begin" id="search">
-                  <div class="input-group-append">
-                    <button id="search-button" class="btn btn-pill btn-outline-primary rounded-xl" type="submit"
-                      onclick=><i class="fas fa-search"></i></button>
-                  </div>
-                </div>
-
+  <!-- Displays to new user, else hidden and shows returning user display-->
+  <div id="newUser" class="search-container">
+    <div class="row">
+      <div class="col min-vh-100">
+        <!-- search bar content goes here -->
+        <div class="container d-flex h-100 w-100 justify-content-center text-center">
+          <div class="my-auto">
+            <div class="row d-block">
+              <small>everything you need in one place</small>
+              <h1 class='display-5'>Your Local Dashboard</h1>
+            </div>
+            <!-- search form -->
+            <div class="input-group d-flex p-1 mt-3 search-bar">
+              <input type="text" class="form-control rounded-xl search-box" placeholder="Enter your location to begin"
+                id="search">
+              <div class="input-group-append">
+                <button id="search-button" class="btn btn-pill btn-outline-primary rounded-xl" type="submit" onclick=><i
+                    class="fas fa-search"></i></button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 order-sm-2">
-      <div id="weatherWidget"></div>
-      <div id="calendarWidget">
-        <div class="googleCalendar my-auto"></div>
+  </div>
+
+
+
+  <div class="row flex-column flex-md-row">
+
+    <div class="col-md-6 bg-light order-2 order-md-1" id="newsContainer">
+      <div id="news" class="col-md-12 col-sm-12 justify-content-around overflow-auto" style="height: 100vh">
+        <h2 class="p-3 mt-3">Local News</h2>
+
+        <!-- news goes here, hopefully -->
+      </div>
+    </div>
+    <div class="col-md-6 order-1 order-md-2 mt-3 m-sm-0" id="widgets">
+      <div id="weatherWidget" class="mt-3"></div>
+      <div id="calendarWidget" class="mt-3">
+        <div class="googleCalendar mx-auto shadow mt-3"></div>
+      </div>
+      <div id="mapWidget" class="mt-3 p-5 d-flex">
+        <div id="map" class="mx-auto sm-w-100" style="width: 550px; height: 500px;">
+        </div>
       </div>
     </div>
   </div>
@@ -117,6 +126,7 @@
 
   <!-- clock widget -->
   <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+
 
 
 </body>
