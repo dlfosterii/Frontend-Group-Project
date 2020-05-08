@@ -14,3 +14,9 @@
 body {
     background-color: var(--c1);
   }
+
+#color1 {background-color: var(--c1); border-style: solid;}
+#color2 {background-color: var(--c2); border-style: solid;}
+#color3 {background-color: var(--c3); border-style: solid;}
+#color4 {background-color: var(--c4); border-style: solid;}
+#color5 {background-color: var(--c5); border-style: solid;}

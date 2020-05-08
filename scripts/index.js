@@ -51,9 +51,12 @@ $('#button-nav').on('click', function () {
 
 // Event listener for changing theme and saving to local storage
 $('.theme-item').on('click', function () {
+    // Gets the theme from the data element and assigns constant reference to themeName
     const themeName = this.dataset.theme;
+    // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
-    if (themeName !== 'partymode') {
+    // Ensure only non-experimental themes are saved to local storage
+    if (themeName !== 'partymode' || themeName !== 'everything') {
         localStorage.setItem('theme', themeName);
     } else {
         localStorage.setItem('theme', 'style');
