@@ -56,7 +56,7 @@ $('.theme-item').on('click', function () {
     // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
     // Ensure only non-experimental themes are saved to local storage
-    if (themeName !== 'partymode' || themeName !== 'everything') {
+    if (themeName !== 'partymode' || themeName !== 'crayon') {
         localStorage.setItem('theme', themeName);
     } else {
         localStorage.setItem('theme', 'style');
