@@ -63,10 +63,10 @@ $('.theme-item').on('click', function () {
     // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
     // Ensure only non-experimental themes are saved to local storage
-    // if (themeName !== 'partymode' || themeName !== 'crayon') {
-    //     localStorage.setItem('theme', themeName);
-    // } else {
+    // if (themeName == 'partymode' || themeName == 'crayon') {
     //     localStorage.setItem('theme', 'style');
+    // } else {
+    //     localStorage.setItem('theme', themeName);
     // }
 });
 
@@ -181,7 +181,7 @@ let newsSearch = [];
 
 function getNews(city, state) {
 
-    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=622dbe54e556e8e03aea093209ed0389`)
+    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=975a5f376a3a857c1cc3d8751561869f`)
         .then(function (response) {
             // add error handling if news doesnt show
             newsSearch = response.data.articles;
@@ -192,7 +192,7 @@ function getNews(city, state) {
                 <div class="row row-cols-1 w-lg-50 w-sm-100">
                 <div class="col mb-4">
                   <div class="card shadow rounded-sm">
-                    <img src="${article.image}" class="card-img-top" alt="">
+                    <img src="${article.image}" class="card-img-top" alt="" onError="this.onerror=null;this.src='resources/images/newspaper.png';">
                     <div class="card-body">
                     <h5 class="card-title"><a href="${article.url}">${article.title}<a/></h5>
                     <p class="card-text">${article.description}</p>
