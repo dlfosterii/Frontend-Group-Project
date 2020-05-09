@@ -62,13 +62,20 @@ $('.theme-item').on('click', function () {
     const themeName = this.dataset.theme;
     // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
+    // **** Changes to the light logo when the Squirtle theme is selected **** 
+    if (themeName == 'squirtle') {
+        document.querySelector('img').setAttribute('src', 'resources/images/Light_Stroke_Light_Logo.svg');
+    } else {
+        document.querySelector('img').setAttribute('src', 'resources/images/LID_Logos_Dark_Logo.svg');
+    }
     // Ensure only non-experimental themes are saved to local storage
     // if (themeName == 'partymode' || themeName == 'crayon') {
     //     localStorage.setItem('theme', 'style');
     // } else {
     //     localStorage.setItem('theme', themeName);
     // }
-});
+})
+
 
 // Main function to set users Location
 function setLocation(inputValue) {
