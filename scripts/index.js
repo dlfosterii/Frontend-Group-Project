@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#news').toggle();
         $('#newsContainer').toggle();
         $('#widgets').toggle();
-        $('.search-container').show();
         $('#navigation').toggle();
+        $('.search-container').show();
 
     } else {
         $('.search-container').toggle();
@@ -40,6 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             $("#search-nav").attr("placeholder", `${visitedJSON.city}, ${visitedJSON.state}`)
         }
+        // set users theme
+        let userTheme = localStorage.getItem('theme');
+        document.getElementById('theme').setAttribute('href', 'styles/' + userTheme + '.css');
+
     }
     var offset = new Date().getTimezoneOffset();
     console.log(offset);
@@ -62,12 +66,13 @@ $('.theme-item').on('click', function () {
     const themeName = this.dataset.theme;
     // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
+
     // Ensure only non-experimental themes are saved to local storage
-    // if (themeName == 'partymode' || themeName == 'crayon') {
-    //     localStorage.setItem('theme', 'style');
-    // } else {
-    //     localStorage.setItem('theme', themeName);
-    // }
+    if (themeName == 'partymode' || themeName == 'crayon') {
+        localStorage.setItem('theme', 'style');
+    } else {
+        localStorage.setItem('theme', themeName);
+    }
 });
 
 // Main function to set users Location
@@ -87,7 +92,9 @@ function setLocation(inputValue) {
         // If else checks user input, can be updated for better error handling
         if (results == null || results == 'ZERO_RESULTS') {
             console.log('error with user input');
-            console.log(status);
+            // $('#errorMessage').text('Your entry is invalid');
+            $('.search-bar').effect("shake", { times: 4 }, 200);
+            $('#search-nav').effect("shake", { distance: 10 }, 200);
         } else {
             console.log(status);
             user.lat = results[0].geometry.location.lat();
@@ -102,26 +109,28 @@ function setLocation(inputValue) {
             user.zip = stateZip[1];
             user.country = (locationArray[locationArray.length - 1]);
             user.city = (locationArray[locationArray.length - 3])
+
+            // Push user {} to localStorage
+            let userInfo = localStorage.getItem('user');
+            let userInfoParsed = JSON.parse(userInfo);
+            // If user doesn't exist in localStorage create empty array
+            if (userInfoParsed === null) {
+                userInfoParsed = [];
+            }
+            // Stringify user then save it to localStorage
+            userInfoToParse = JSON.stringify(user);
+            localStorage.setItem('user', userInfoToParse);
+
+            $("#search-nav").attr("placeholder", `${user.city}, ${user.state}`)
+            console.log(user.city)
+            getNews(user.city, user.state);
+            getWeather(user);
+            getCalendar();
+            location.reload();
+            return false;
+
         }
 
-        // Push user {} to localStorage
-        let userInfo = localStorage.getItem('user');
-        let userInfoParsed = JSON.parse(userInfo);
-        // If user doesn't exist in localStorage create empty array
-        if (userInfoParsed === null) {
-            userInfoParsed = [];
-        }
-        // Stringify user then save it to localStorage
-        userInfoToParse = JSON.stringify(user);
-        localStorage.setItem('user', userInfoToParse);
-
-        $("#search-nav").attr("placeholder", `${user.city}, ${user.state}`)
-        console.log(user.city)
-        getNews(user.city, user.state);
-        getWeather(user);
-        getCalendar();
-        location.reload();
-        return false;
     });
 }
 
@@ -184,6 +193,9 @@ function getNews(city, state) {
     axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=975a5f376a3a857c1cc3d8751561869f`)
         .then(function (response) {
             // add error handling if news doesnt show
+            if (response.status != 200) {
+                console.log('error retrieving news');
+            }
             newsSearch = response.data.articles;
             let newsBlock = newsSearch.map(function (article) {
 
