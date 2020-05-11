@@ -12,19 +12,25 @@
 
 /* Changes background color */ 
 body {
-  background-color: var(--c1);
+  background-color: var(--c2);
 }
 
-.card {
+.card,button#button-nav.btn.btn-outline-primary:hover, 
+button#themeDropdown.btn.btn-outline-primary.dropdown-toggle:hover {
 background-color: var(--c3);
 }
 
 #navbarShow {
-background-color: var(--c5);
+background-color: var(--c1);
 }
 
-h2 {
+h2, em > small {
 color: var(--c5);
+}
+
+button#button-nav.btn.btn-outline-primary, button#themeDropdown.btn.btn-outline-primary.dropdown-toggle  {
+color: var(--c5);
+border-color: var(--c5);
 }
 
 a {
@@ -32,7 +38,8 @@ color: var(--c2);
 }
 
 a:hover {
-color: var(--c5);
+text-shadow: var(--c5) 1px 0 1px;
+color: var(--c2);
 }
 
 p {

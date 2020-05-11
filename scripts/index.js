@@ -67,13 +67,21 @@ $('.theme-item').on('click', function () {
     // Change current theme to selected theme
     document.getElementById('theme').setAttribute('href', 'styles/' + themeName + '.css');
 
-    // Ensure only non-experimental themes are saved to local storage
-    if (themeName == 'partymode' || themeName == 'crayon') {
-        localStorage.setItem('theme', 'style');
+    // **** Changes to the light logo when the Squirtle theme is selected **** 
+    if (themeName == 'squirtle') {
+        document.querySelector('img').setAttribute('src', 'resources/images/Light_Stroke_Light_Logo.svg');
     } else {
-        localStorage.setItem('theme', themeName);
+        document.querySelector('img').setAttribute('src', 'resources/images/LID_Logos_Dark_Logo.svg');
     }
-});
+    // Ensure only non-experimental themes are saved to local storage
+    // if (themeName == 'partymode' || themeName == 'crayon') {
+    //     localStorage.setItem('theme', 'style');
+    // } else {
+    //     localStorage.setItem('theme', themeName);
+    // }
+})
+
+
 
 // Main function to set users Location
 function setLocation(inputValue) {
@@ -174,7 +182,7 @@ function getWeather(obj) {
     // push in users lat and lng to the weather widget
     $('#weatherWidget').append(`<div class="climacell-widget" data-apikey="Ejzw0cBfFqLJY7Cs3pX4ByvMz2Kb3l3y"
     data-type="nowcast" data-location-name="${city}" data-location-lon="${lng}" data-location-lat="${lat}"
-    data-size-mode="large" data-font-color="#000" data-background-color="#f1f0ef" data-font-family="verdana"
+    data-size-mode="large" data-font-color="#000" data-background-color="rgba(250,250,250,0)" data-font-family="verdana"
     data-weather-params="temp:F,precipitation:mm/hr,wind_speed:mph,humidity:%,cloud_cover:%"
     data-precipitation-timeline="true"></div>`)
 }

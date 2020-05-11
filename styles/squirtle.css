@@ -12,19 +12,25 @@
 
 /* Changes background color */ 
 body {
-    background-color: var(--c1);
+    background-color: var(--c2);
   }
 
-.card {
+.card,button#button-nav.btn.btn-outline-primary:hover, 
+button#themeDropdown.btn.btn-outline-primary.dropdown-toggle:hover {
   background-color: var(--c3);
 }
 
 #navbarShow {
-  background-color: var(--c2);
+  background-color: var(--c1);
+}
+/* This makes the words match the logo in the navbar */
+h2, em > small {
+  color: var(--c5);
 }
 
-h2 {
+button#button-nav.btn.btn-outline-primary, button#themeDropdown.btn.btn-outline-primary.dropdown-toggle  {
   color: var(--c5);
+  border-color: var(--c5);
 }
 
 a {
@@ -32,7 +38,8 @@ a {
 }
 
 a:hover {
-  color: var(--c5);
+  text-shadow: var(--c5) 1px 0 1px;
+  color: var(--c2);
 }
 
 p {
