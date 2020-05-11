@@ -6,8 +6,6 @@
 [![Github](https://github.com/dlfosterii/Frontend-Group-Project/blob/master/resources/images/github-logo.png?raw=true)](https://github.com/dlfosterii/Frontend-Group-Project)
 
 
-### Github Repository: [https://github.com/dlfosterii/Frontend-Group-Project](https://github.com/dlfosterii/Frontend-Group-Project)
-
 ## Developer Team
  - [Nick Bess](https://github.com/NBESS)
  - [Jonathan Cox](https://github.com/jonathancox1)
