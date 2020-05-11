@@ -1,7 +1,10 @@
 # Local Information Dashboard
 [Local Information Dashboard](https://wizardly-khorana-147bb3.netlify.app/) (Linfo) is a single-page website to gather news and weather for your location based on the user's location input. This was originally a group project for a coding bootcamp at [DigitalCrafts](https://www.digitalcrafts.com/) in Atlanta, GA.
 
-### Netlify Link: https://wizardly-khorana-147bb3.netlify.app/
+
+[![Netlify](https://github.com/dlfosterii/Frontend-Group-Project/blob/master/resources/images/netlify-logo.png?raw=true)](https://wizardly-khorana-147bb3.netlify.app/)
+[![Github](https://github.com/dlfosterii/Frontend-Group-Project/blob/master/resources/images/github-logo.png?raw=true)](https://github.com/dlfosterii/Frontend-Group-Project)
+
 
 ### Github Repository: [https://github.com/dlfosterii/Frontend-Group-Project](https://github.com/dlfosterii/Frontend-Group-Project)
 
@@ -13,12 +16,14 @@
 
 ## Integrated API's
 
+
 Linfo utilizes the Google Places API as the foundation for the dashboard. An additional API is from GNews to retrieve a curated list of news that is localized to the user's city.
 
-|API |Source| Authentication Required?|Query Limit|
-|----------------|-------------------------------|-|-|
+|API|Source|Authentication Required?|Query Limit|
+|---|------|------------------------|-----------|
 |Google Maps|developers.google.com/places|Yes|$0.017/Request|
 |GNews|gnews.io|Yes|100/Day
+
 
 - **Google Places** - The Google Places API is the foundation to the Linfo dashboard. When a user visits the website for the first time, they are prompted to enter their location. Google Places then deciphers the input and returns the closest match as their location. The Linfo website extracts the relevant values and is stored into the browser's Local Storage.
 - **GNews** - GNews is a 3rd party API that acts as a replacement for the deprecated Google News API. When a location is available for the user, the required location data is sent to GNews with a GET request and curated list of local news is automatically populated on the dashboard.
@@ -27,8 +32,9 @@ Linfo utilizes the Google Places API as the foundation for the dashboard. An add
 ## Integrated Widgets
 With the help of widgets, Linfo is able to display visual data of pertinent information in relation to the user's location.
 
-|Widget |Source |Authentication Required?|Query Limit|
-|----------------|-------------------------------|-|-|
+
+|Widget|Source|Authentication Required?|Query Limit|
+|------|------|------------------------|-----------|
 |Google Calendar|calendar.google.com|Yes|∞|
 |Climacell Weather|climacell.co|Yes|100/Day|
 
@@ -37,17 +43,8 @@ With the help of widgets, Linfo is able to display visual data of pertinent info
   
 
 ## An overview of our API's
-```mermaid
-graph TB
-A(<b>Local Information Dashboard</b><br><center>accept user input)--> B((<center>Local Storage<br>check for <br>‘user’ & ‘theme’))
-B --> C(Google Places API)
-C --> z((<center>formats user address<br> & lat/long<br>saves to Local Storage))
-z --> D
-B --> D{<center><b>Access API’s<br></b>and widgets</center><ul><li>gnews</li><li>googleMap</li><li>climacel weather</li>}
-D --> E[<center>Render results to page<br>]
-E --> F((<center>Users changes theme<br>save in localStorage))
-E --> G[<center>user changes location]
-```
+
+![Diagram](https://i.imgur.com/VYXnuPZ.png)
   
 ## Contributing
 
@@ -57,7 +54,5 @@ Please make sure to update tests as appropriate.
 
   
 ## License
-
-  
 
 [GPL-3.0-or-later](https://spdx.org/licenses/GPL-3.0-or-later.html)
