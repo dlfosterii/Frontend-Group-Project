@@ -36,9 +36,18 @@ With the help of widgets, Linfo is able to display visual data of pertinent info
 - **Climacell Weather** - Climacell Weather provides a widget that displays a visualized weather forecast of the user's location. 
   
 
-## API Usage
-
-PLACEHOLDER FOR DIAGRAM
+## An overview of our API's
+```mermaid
+graph TB
+A(<b>Local Information Dashboard</b><br><center>accept user input)--> B((<center>Local Storage<br>check for <br>‘user’ & ‘theme’))
+B --> C(Google Places API)
+C --> z((<center>formats user address<br> & lat/long<br>saves to Local Storage))
+z --> D
+B --> D{<center><b>Access API’s<br></b>and widgets</center><ul><li>gnews</li><li>googleMap</li><li>climacel weather</li>}
+D --> E[<center>Render results to page<br>]
+E --> F((<center>Users changes theme<br>save in localStorage))
+E --> G[<center>user changes location]
+```
   
 ## Contributing
 
