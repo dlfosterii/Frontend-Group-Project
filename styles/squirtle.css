@@ -23,7 +23,7 @@ button#themeDropdown.btn.btn-outline-primary.dropdown-toggle:hover {
 #navbarShow {
   background-color: var(--c1);
 }
-
+/* This makes the words match the logo in the navbar */
 h2, em > small {
   color: var(--c5);
 }
