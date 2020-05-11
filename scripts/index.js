@@ -30,23 +30,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     } else {
         $('.search-container').toggle();
-        console.log('adding weather');
+        getMap();
         getWeather(visitedJSON);
         getCalendar();
-        console.log(visitedJSON);
         getNews(visitedJSON.city, visitedJSON.state);
         if (visitedJSON.city === undefined) {
-            $("#search-nav").attr("placeholder", `${visitedJSON.state}`)
+            $("#search-nav").val(`${visitedJSON.state}`)
         } else {
-            $("#search-nav").attr("placeholder", `${visitedJSON.city}, ${visitedJSON.state}`)
+            $("#search-nav").val(`${visitedJSON.city}, ${visitedJSON.state}`)
         }
         // set users theme
         let userTheme = localStorage.getItem('theme');
-        document.getElementById('theme').setAttribute('href', 'styles/' + userTheme + '.css');
-
+        if (userTheme === null) {
+            console.log('undefined theme')
+        } else {
+            document.getElementById('theme').setAttribute('href', 'styles/' + userTheme + '.css');
+        }
     }
-    var offset = new Date().getTimezoneOffset();
-    console.log(offset);
 });
 
 // Event listeners for main search bar button
@@ -73,21 +73,19 @@ $('.theme-item').on('click', function () {
     } else {
         document.querySelector('img').setAttribute('src', 'resources/images/LID_Logos_Dark_Logo.svg');
     }
-    // Ensure only non-experimental themes are saved to local storage
-    // if (themeName == 'partymode' || themeName == 'crayon') {
-    //     localStorage.setItem('theme', 'style');
-    // } else {
-    //     localStorage.setItem('theme', themeName);
-    // }
+    // Ensure only non - experimental themes are saved to local storage
+    if (themeName == 'partymode' || themeName == 'crayon') {
+        localStorage.setItem('theme', 'style');
+    } else {
+        localStorage.setItem('theme', themeName);
+    }
 })
 
 
 
 // Main function to set users Location
 function setLocation(inputValue) {
-    console.log(inputValue);
     const searchValue = inputValue.val();
-    console.log(searchValue);
     const request = {
         query: searchValue,
         fields: [
@@ -104,7 +102,6 @@ function setLocation(inputValue) {
             $('.search-bar').effect("shake", { times: 4 }, 200);
             $('#search-nav').effect("shake", { distance: 10 }, 200);
         } else {
-            console.log(status);
             user.lat = results[0].geometry.location.lat();
             user.lng = results[0].geometry.location.lng();
             // Formats the response from google API
@@ -129,8 +126,11 @@ function setLocation(inputValue) {
             userInfoToParse = JSON.stringify(user);
             localStorage.setItem('user', userInfoToParse);
 
-            $("#search-nav").attr("placeholder", `${user.city}, ${user.state}`)
-            console.log(user.city)
+            if (userInfoParsed.city === undefined) {
+                $("#search-nav").val(`${userInfoParsed.state}`)
+            } else {
+                $("#search-nav").val(`${userInfoParsed.city}, ${userInfoParsed.state}`)
+            }
             getNews(user.city, user.state);
             getWeather(user);
             getCalendar();
@@ -151,9 +151,10 @@ function newUserDiv() {
 var map;
 // Callback function to generate map used in the URL for the API in index.html
 function initMap() {
-    console.log('init map');
     placesService = new google.maps.places.PlacesService(document.createElement('div'));
+};
 
+function getMap() {
     let userInfo = localStorage.getItem('user');
     let userInfoParsed = JSON.parse(userInfo);
     let userQuard = { lat: userInfoParsed.lat, lng: userInfoParsed.lng };
@@ -163,14 +164,10 @@ function initMap() {
         center: userQuard,
         zoom: 13
     });
-    // adds the users location as a marker on the map
-    // var marker = new google.maps.Marker({ position: userQuard, map: map });
-
     // adds traffic overlay
     var trafficLayer = new google.maps.TrafficLayer();
     trafficLayer.setMap(map);
-
-};
+}
 
 // get weather info and create widget 
 function getWeather(obj) {
@@ -198,7 +195,7 @@ let newsSearch = [];
 
 function getNews(city, state) {
 
-    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=975a5f376a3a857c1cc3d8751561869f`)
+    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=fd3ce1755a310874f59ba5e0d24bb542`)
         .then(function (response) {
             // add error handling if news doesnt show
             if (response.status != 200) {
