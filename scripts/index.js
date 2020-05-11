@@ -177,7 +177,7 @@ function getWeather(obj) {
         city = ' ';
     }
     // push in users lat and lng to the weather widget
-    $('#weatherWidget').append(`<div class="climacell-widget" data-apikey="Ejzw0cBfFqLJY7Cs3pX4ByvMz2Kb3l3y"
+    $('#weatherWidget').append(`<div class="climacell-widget" data-apikey="V8bFhHs1eVfWu6jkLVIwmSQc9Nqmpxhh"
     data-type="nowcast" data-location-name="${city}" data-location-lon="${lng}" data-location-lat="${lat}"
     data-size-mode="large" data-font-color="#000" data-background-color="rgba(250,250,250,0)" data-font-family="verdana"
     data-weather-params="temp:F,precipitation:mm/hr,wind_speed:mph,humidity:%,cloud_cover:%"
@@ -195,7 +195,7 @@ let newsSearch = [];
 
 function getNews(city, state) {
 
-    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=fd3ce1755a310874f59ba5e0d24bb542`)
+    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=feb7b31d5cca7ba0162f03a45aa27c73`)
         .then(function (response) {
             // add error handling if news doesnt show
             if (response.status != 200) {
