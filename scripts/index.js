@@ -195,7 +195,7 @@ let newsSearch = [];
 
 function getNews(city, state) {
 
-    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=feb7b31d5cca7ba0162f03a45aa27c73`)
+    axios.get(`https://gnews.io/api/v3/search?q=${city}%20${state}&token=a5ad6e266f09e9d9a306372a761e63bd`)
         .then(function (response) {
             // add error handling if news doesnt show
             if (response.status != 200) {
